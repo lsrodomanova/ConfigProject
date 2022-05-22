@@ -15,7 +15,7 @@ public interface WebDriverUtil {
         Configuration.remote = config.remote();
 
 
-        if (System.getProperty("typeProperties").equals("remote")) {
+        if (System.getProperty("typeBrowser").equals("remote")) {
             Configuration.remote = config.remote();
         }
         Configuration.browser = config.browser();
