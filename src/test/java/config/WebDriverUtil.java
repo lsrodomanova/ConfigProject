@@ -7,7 +7,7 @@ import org.aeonbits.owner.ConfigFactory;
 @Config.Sources("classpath:config/credentials.properties")
 
 public interface WebDriverUtil {
-    WebDriverConfigSelenoid config = ConfigFactory.create(WebDriverConfigSelenoid.class);
+    WebDriverConfigSelenoid config = ConfigFactory.create(WebDriverConfigSelenoid.class, System.getProperties());
 
     static void configure() {
         Configuration.browser = config.browser();
