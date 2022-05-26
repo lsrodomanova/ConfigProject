@@ -2,23 +2,18 @@ package config;
 
 import com.codeborne.selenide.Configuration;
 import org.aeonbits.owner.Config;
-import org.aeonbits.owner.ConfigFactory;
 
-@Config.Sources("classpath:config/credentials.properties")
+
+@Config.Sources({"system:properties",
+        "classpath:config/WebConfig.properties"})
 
 public interface WebDriverUtil {
-    WebDriverConfigSelenoid config = ConfigFactory.create(WebDriverConfigSelenoid.class, System.getProperties());
 
     static void configure() {
-        Configuration.browser = config.browser();
-        Configuration.browserVersion = config.browserVersion();
-        Configuration.remote = config.remote();
 
+        Configuration.browser = WebConfigProvider.config.browser();
+        Configuration.browserVersion = WebConfigProvider.config.browserVersion();
+        Configuration.remote = WebConfigProvider.config.remote();
 
-        if (System.getProperty("typeBrowser").equals("remote")) {
-            Configuration.remote = config.remote();
-        }
-        Configuration.browser = config.browser();
-        Configuration.browserVersion = config.browserVersion();
     }
 }

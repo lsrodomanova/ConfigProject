@@ -2,9 +2,10 @@ package config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources("classpath:config/credentials.properties")
+@Config.Sources({"system:properties",
+        "classpath:config/WebConfig.properties"})
 
-public interface WebDriverConfigSelenoid extends Config {
+public interface WebConfig extends Config {
 
 
     @Key("browser")
@@ -17,4 +18,5 @@ public interface WebDriverConfigSelenoid extends Config {
 
     @Key("remote")
     String remote();
+
 }
