@@ -1,11 +1,8 @@
 package config;
 
 import com.codeborne.selenide.Configuration;
-import org.aeonbits.owner.Config;
 
 
-@Config.Sources({"system:properties",
-        "classpath:config/WebConfig.properties"})
 
 public interface WebDriverUtil {
 
@@ -13,7 +10,9 @@ public interface WebDriverUtil {
 
         Configuration.browser = WebConfigProvider.config.browser();
         Configuration.browserVersion = WebConfigProvider.config.browserVersion();
-        Configuration.remote = WebConfigProvider.config.remote();
 
+        if (WebConfigProvider.config.remote() !=null) {
+            Configuration.remote=WebConfigProvider.config.remote();
+        }
     }
 }
