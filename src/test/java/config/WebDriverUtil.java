@@ -3,7 +3,6 @@ package config;
 import com.codeborne.selenide.Configuration;
 
 
-
 public interface WebDriverUtil {
 
     static void configure() {
